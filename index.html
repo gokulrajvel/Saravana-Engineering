@@ -107,9 +107,10 @@
     gap:clamp(8px, 2vw, 12px);
     font-family:'Space Grotesk',sans-serif;
     font-weight:600;
-    font-size:clamp(15px, 3.5vw, 18px);
+    font-size:clamp(14px, 3.2vw, 18px);
     letter-spacing:-0.01em;
     min-width:0;
+    flex-shrink:0;
   }
   .brand-mark{
     width:clamp(32px, 6vw, 40px);
@@ -132,9 +133,11 @@
   }
   nav.links{
     display:flex;
-    gap:clamp(18px, 2.5vw, 36px);
+    align-items:center;
+    gap:clamp(14px, 2vw, 30px);
     font-size:14px;
     font-weight:500;
+    white-space:nowrap;
   }
   nav.links a{
     color:var(--ink-soft);
@@ -146,7 +149,7 @@
   .nav-right{
     display:flex;
     align-items:center;
-    gap:clamp(10px, 1.5vw, 20px);
+    gap:clamp(8px, 1.5vw, 16px);
     flex:none;
   }
   .btn{
@@ -164,6 +167,7 @@
     transition:all .15s ease;
     white-space:nowrap;
     min-height:40px;
+    box-sizing:border-box;
   }
   .btn-primary{
     background:var(--ink);
@@ -180,13 +184,14 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
     color:var(--ink-soft);
     border:1px solid transparent;
     border-radius:var(--radius);
     transition:color .15s ease, border-color .15s ease;
     flex:none;
+    box-sizing:border-box;
   }
   .social-link:hover{color:#C4302B;border-color:var(--line-strong);}
 
@@ -206,6 +211,7 @@
     flex-direction:column;
     gap:5px;
     transition:border-color .15s ease, background .15s ease;
+    box-sizing:border-box;
   }
   .menu-toggle span{
     display:block;
@@ -282,20 +288,24 @@
     padding-top:20px;
   }
 
-  @media(max-width:920px){
+  @media(max-width:1120px){
+    .nav-right .btn-outline{display:none;}
+  }
+  @media(max-width:980px){
     nav.links{display:none;}
     .menu-toggle{display:flex;}
     .mobile-drawer{display:flex;}
     .nav-right .btn-outline{display:none;}
   }
-  @media(max-width:540px){
+  @media(max-width:580px){
+    .nav-right .social-link{display:none;}
     .nav-right .btn-primary{display:none;}
   }
 
   /* ===== HERO ===== */
   .hero{
     position:relative;
-    padding:clamp(48px, 8vw, 84px) 0 clamp(56px, 9vw, 96px);
+    padding:clamp(56px, 8vw, 84px) 0 clamp(56px, 8vw, 88px);
     overflow:hidden;
     background:linear-gradient(var(--paper),var(--paper)) padding-box, var(--paper);
   }
@@ -728,11 +738,11 @@
   .locale-card p{font-size:14px;color:var(--ink-soft);margin:0;}
 
   .founder-card{
-    margin-top:clamp(36px, 5vw, 56px);
+    margin-top:clamp(24px, 4vw, 36px);
     display:flex;
     align-items:center;
-    gap:clamp(18px, 3vw, 26px);
-    padding:clamp(20px, 3.5vw, 32px);
+    gap:clamp(16px, 2.5vw, 24px);
+    padding:clamp(18px, 2.8vw, 26px);
     background:var(--paper-raised);
     border:1px solid var(--line-strong);
     position:relative;
@@ -840,7 +850,7 @@
   .footer-grid{
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
+    align-items:center;
     flex-wrap:wrap;
     gap:clamp(20px, 4vw, 32px);
     padding-bottom:28px;
@@ -927,7 +937,7 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero" style="padding-top:64px;">
+  <section class="hero">
     <div class="blueprint-grid"></div>
     <div class="wrap hero-grid">
       <div>
@@ -954,8 +964,6 @@
       </div>
     </div>
   </section>
-
-  <hr class="divider">
 
   <!-- SERVICES -->
   <section class="services" id="services">
@@ -999,10 +1007,6 @@
       </div>
     </div>
   </section>
-
-  <!-- GALLERY -->
-  
-  <hr class="divider">
 
   <!-- MACHINERY & INFRASTRUCTURE -->
   <section class="machinery" id="machinery">
@@ -1167,6 +1171,13 @@
       <div>
         <div class="eyebrow">About the workshop</div>
         <h2>Built on Hosur's<br>manufacturing floor.</h2>
+        <div class="founder-card reveal">
+          <div class="founder-avatar" aria-hidden="true">GSJ</div>
+          <div class="founder-info">
+            <div class="mono-label">Proprietor</div>
+            <h4>G S Jayaganth</h4>
+          </div>
+        </div>
       </div>
       <div>
         <p>Saravana Engineering is a mechanical engineering workshop based in Begapalli, Hosur — a manufacturing belt known for precision machining and auto-component work. The shop takes on design engineering, mechanical engineering and prototyping under one roof, so a part can move from sketch to sample without changing hands between vendors.</p>
@@ -1175,16 +1186,6 @@
           <div class="mono-label">Service Area</div>
           <h4>Hosur &amp; surrounding industrial belt</h4>
           <p>Rajeswari Layout, Begapalli and the wider Hosur manufacturing corridor, Tamil Nadu.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="wrap">
-      <div class="founder-card reveal">
-        <div class="founder-avatar" aria-hidden="true">GSJ</div>
-        <div class="founder-info">
-          <div class="mono-label">Proprietor</div>
-          <h4>G S Jayaganth</h4>
         </div>
       </div>
     </div>
@@ -1330,7 +1331,7 @@
 
     // Reset overflow and close drawer on desktop resize
     window.addEventListener('resize', ()=>{
-      if(window.innerWidth > 920 && mobileDrawer.classList.contains('open')){
+      if(window.innerWidth > 980 && mobileDrawer.classList.contains('open')){
         closeDrawer();
       }
     });
